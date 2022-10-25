@@ -1,17 +1,16 @@
 const { Pool, Client } = require("pg");
 
 
-const pg_conn = new Pool(
-    {
-        user: 'utvmdcafqradkl',
-        host: 'ec2-44-209-24-62.compute-1.amazonaws.com',
-        database: 'dfifpbr2l6a6j5',
-        password: 'a57b486a174b6cfcf6d50a258da9d72fd33f4b51cd54a0d5a8f52211916887c0',
-        port: 5432,
-        ssl:{
-            rejectUnauthorized: false
-        },
-    });
+const pg_conn = new Pool({
+    user: 'jwlrwdxxudhlbl',
+    host: 'ec2-52-70-45-163.compute-1.amazonaws.com',
+    database: 'd4knn7ptr9nj1k',
+    password: '7a1ca949ea03185883f172e44a6d8bc3984f38e6abe86dc1620f271eb9f23c13',
+    port: 5432,
+    ssl: {
+        rejectUnauthorized: false
+    },
+});
 
 // console.log(pg_conn);
-    module.exports = pg_conn
+module.exports = pg_conn
