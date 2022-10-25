@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+
+<head>
+    <title>
+        <%= title %>
+    </title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link rel='stylesheet' , href='/stylesheets/style.css'>
+    
+</head>
+
+<body>
+
+    <tbody>
+
+        <% if (data != null) { %>
+            <div class="table-wrapper">
+                <div class="table-title">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <h2>Manage <b>Employees</b></h2>
+                        </div>
+                    </div>
+                </div>
+                <table class="table table-striped table-hover">
+                    <thead>
+                        <tr>
+                            <th>
+                                <span class="custom-checkbox">
+                                </span>
+                            </th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Address</th>
+                            <th>ShopID</th>
+                        </tr>
+                    </thead>
+                    <% for (let p of data) { %>
+
+                        <tr>
+                            <td>
+                            </td>
+                            <td>
+                                <%= p.username %>
+                            </td>
+                            <td>
+                                <%= p.password %>
+                            </td>
+                            <td>
+                                <%= p.role %>
+                            </td>
+                            <td>
+                                <%= p.shopid %>
+                            </td>
+
+                        </tr>
+                        <% } } %>
+    </tbody>
+    </table>
+
+    
+ 
+    <body>
+
+    <tbody>
+        <h2>Manage <b>Product</b></h2>
+
+        <form action="/getProductByShop">
+            <select class="form-select" name="Select_Shop">
+        <option selected>Open this select menu</option> 
+         <% for (let p of shopIdList) { %> 
+    
+        <option name = "shopid" value= <%= p.shopid %>> <%= p.shopid %> </option>
+     
+         <% } %> 
+         
+     </select>
+            <button class="btn btn-success rounded-pill" type="submit">Search</button>
+        </form>
+        <% if (products != null) { %>
+            <div class="table-wrapper">
+                <table class="table table-striped table-hover">
+                    <thead>
+                        <tr>
+                            <th>
+                                <span class="custom-checkbox">
+                                </span>
+                            </th>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Quantity</th>
+                            <th>Price</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <% for (let p of products) { %>
+
+                        <tr>
+                            <td>
+                            </td>
+                            <td>
+                                <%= p.productid %>
+                            </td>
+                            <td>
+                                <%= p.productname %>
+                            </td>
+                            <td>
+                                <%= p.productquantity %>
+                            </td>
+                            <td>
+                                <%= p.productprice %>
+                            </td>
+                            <td>
+                                <%= p.productdescription %>
+                            </td>
+                            <form action="/logout" method="get">
+                                <button class="btn btn-success rounded-pill">Logout</button>
+                            </form>
+                        </tr>
+                        <% } } %>
+    </tbody>
+    </table>
+
+            </select>
+       
+</body>

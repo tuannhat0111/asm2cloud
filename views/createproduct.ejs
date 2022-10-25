@@ -1,0 +1,30 @@
+
+    <!DOCTYPE html> 
+    <html lang="en">
+      <head>
+        <title> Create Product </title>
+        <link rel='stylesheet', href='/stylesheets/style.css'>
+      </head>
+      <body>
+        <form action="/user/createproduct" method="POST">
+          <div >
+              <input type = "text" name="nameproduct" required>
+              <label for="nameproduct"> Name Product</label>
+          </div>
+          <div>
+              <input type="text" name="quantity" required>
+              <label for ="quantity">Quantity </label>
+          </div>
+          <div>
+            <input type="text" name="price" required>
+            <label for ="price">Price </label>
+        </div> 
+         <div>
+            <input type="text" name="description" required>
+            <label for ="description">Description </label>
+        </div>
+
+          <button class="btn">Create</button>
+      </form> 
+      </body>
+        </html>

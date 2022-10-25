@@ -1,0 +1,65 @@
+<!-- <!DOCTYPE html> 
+<html lang="en">
+  <head>
+    <title> <%= title %> </title>
+    <link rel='stylesheet', href='/stylesheets/style.css'>
+
+  <body>
+    <h1> <%= title%> </h1>
+    <p>Welecom to <%= title %></p>
+    <form action="login" method="post">
+        <div class="userName">
+            <input type = "text" class = "name" required>
+            <label for="name"> Username</label>
+        </div>
+        <div>
+            <input type="password" class = "pass" required>
+            <label for ="pass">Password </label>
+        </div>
+        <button class="btn">login</button>
+    </form>
+  </body>
+    </html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>
+        <%= title %>
+    </title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link rel='stylesheet' , href='/stylesheets/style.css'>
+</head>
+
+<body>
+
+    <div class="text-center center-div">
+        <h1>
+            <%= title%>
+        </h1>
+        <div class="container w-25 border py-5">
+            <h2>
+                <span><%= notice%></span>
+
+            </h2>
+            <form style="width: 22rem;" action="/login" method="POST">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="email" name="username" required>
+                    <label for="username" style="margin-left: 0px;"> Username</label>
+                </div>
+
+
+                <div class="form-group">
+                    <input type="password" class="form-control" name="password" placeholder="password" required>
+                    <label for="password" style="margin-left: 0px;">Password </label>
+
+                </div>
+
+                <button class="btn btn-success rounded-pill">Login</button>
+            </form>
+            <div>
+            </div>
+</body>
+
+</html>
