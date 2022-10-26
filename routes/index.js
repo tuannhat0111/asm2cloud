@@ -3,7 +3,7 @@ var authen = require('../model/authenticator');
 const get_data_account = require('../model/getdatabyaccount');
 const set_data_account = require('../model/setdatabyaccount');
 const deleteFunc = require('../model/deletedatabyaccount');
-const[getproduct, setproduct] = require('../model/getproduct');
+const [getproduct, setproduct] = require('../model/getproduct');
 var session = require('express-session')
 
 var router = express.Router();
@@ -11,13 +11,13 @@ var shopid;
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-    res.render('index', { title: 'Express' });
+    res.render('index', { title: 'ATN SHOP' });
 });
 
 
 
 router.get('/login', function(req, res, next) {
-    res.render('login', { title: 'LOGIN PAGE', notice: "Wellcome to ATN SHOP" });
+    res.render('login', { title: 'LOGIN PAGE', notice: "Wellcome to ATN Company" });
 });
 
 router.get('/logout', function(req, res, next) {
@@ -34,11 +34,11 @@ router.post('/login', async function(req, res, next) {
     session = req.session;
     let [authenticated, shop_id, role] = await authen(username, password);
     shopid = shop_id;
-    
+
     if (authenticated == true && role == "USER") {
         // let [dataInDb, shopIdList] = await get_data_account(shop_id);
         // res.render('user', { title: 'USER PAGE', products: dataInDb.rows, shopid: shop_id });
-        
+
         session.shop_id = shop_id;
         res.redirect('/user');
     } else if (authenticated == true && role == "ADMIN") {
