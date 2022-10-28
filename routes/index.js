@@ -14,8 +14,6 @@ router.get('/', function(req, res, next) {
     res.render('index', { title: 'ATN SHOP' });
 });
 
-
-
 router.get('/login', function(req, res, next) {
     res.render('login', { title: 'LOGIN PAGE', notice: "Wellcome to ATN Company" });
 });
@@ -24,7 +22,6 @@ router.get('/logout', function(req, res, next) {
     req.session.destroy;
     res.redirect('/');
 });
-
 
 router.post('/login', async function(req, res, next) {
     console.log('username: ' + req.body.username)
@@ -36,8 +33,6 @@ router.post('/login', async function(req, res, next) {
     shopid = shop_id;
 
     if (authenticated == true && role == "USER") {
-        // let [dataInDb, shopIdList] = await get_data_account(shop_id);
-        // res.render('user', { title: 'USER PAGE', products: dataInDb.rows, shopid: shop_id });
 
         session.shop_id = shop_id;
         res.redirect('/user');
@@ -50,9 +45,6 @@ router.post('/login', async function(req, res, next) {
     }
 
 });
-
-
-
 
 router.get('/getProductByShop', async function(req, res, next) {
     // res.render('createproduct', {  title: 'Create Product PAGE' })

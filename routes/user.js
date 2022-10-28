@@ -10,10 +10,7 @@ var shopid;
 /* GET users listing. */
 router.get('/', async function(req, res, next) {
     let session = req.session;
-    // let dataInDb = session.dataInDb;
     shopid = session.shop_id;
-    // let shopIdList = session.shopIdList;
-    // res.send('repond with a resource');
     let [dataInDb, shopIdList] = await get_data_account(shopid);
     res.render('user', { title: 'USER PAGE', products: dataInDb.rows, shopid: shopid });
 });
