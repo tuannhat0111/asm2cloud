@@ -12,6 +12,7 @@ router.get('/', async function(req, res, next) {
     let session = req.session;
     shopid = session.shop_id;
     let [dataInDb, shopIdList] = await get_data_account(shopid);
+    console.log(dataInDb);
     res.render('user', { title: 'USER PAGE', products: dataInDb.rows, shopid: shopid });
 });
 
@@ -22,7 +23,11 @@ router.get('/createproduct/', function(req, res, next) {
 
 router.post('/createproduct/', async function(req, res, next) {
     console.log(req.body.nameproduct);
-    var data = await set_data_account(req.body.nameproduct, parseInt(req.body.quantity), parseInt(req.body.price), req.body.quality, req.body.description, shopid);
+    var data = await set_data_account(req.body.nameproduct, 
+                     parseInt(req.body.quantity), 
+                     parseInt(req.body.price), 
+                     req.body.quality, 
+                     req.body.description, shopid);
     let [dataInDb, shopIdList] = await get_data_account(shopid);
 
     res.render('user', { title: 'Hello', products: dataInDb.rows });
@@ -51,7 +56,7 @@ router.post('/updateproduct', async function(req, res, next) {
 
     var data = await setproduct(parseInt(productquantity), parseInt(productprice), quality, productdescription);
     let [dataInDb, shopIdList] = await get_data_account(shopid);
-    res.render('user', { title: 'USER PAGE', products: dataInDb.rows, shopid: shopid });
+    res.render('user', { title: 'USER PAGE', products: dataInDb.rows});
 
 });
 

@@ -20,3 +20,5 @@ async function get_data_account(shopid){
     return [data,shopIdList] ;
 }
 module.exports = get_data_account
+
+

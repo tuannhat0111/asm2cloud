@@ -12,10 +12,7 @@ async function authen(username, password)
         shop_id =query_data.rows[0].shopid;
         role = query_data.rows[0].role
     }
-    // console.log(authenticated);
-    // console.log("Trong ham");
-    // console.log(query_data.rows);
-    // return query_data;
+   
     return [authenticated, shop_id, role];
 }
 
