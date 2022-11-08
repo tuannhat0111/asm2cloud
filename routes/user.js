@@ -12,7 +12,6 @@ router.get('/', async function(req, res, next) {
     let session = req.session;
     shopid = session.shop_id;
     let [dataInDb, shopIdList] = await get_data_account(shopid);
-    console.log(dataInDb);
     res.render('user', { title: 'USER PAGE', products: dataInDb.rows, shopid: shopid });
 });
 
@@ -22,7 +21,6 @@ router.get('/createproduct/', function(req, res, next) {
 });
 
 router.post('/createproduct/', async function(req, res, next) {
-    console.log(req.body.nameproduct);
     var data = await set_data_account(req.body.nameproduct, 
                      parseInt(req.body.quantity), 
                      parseInt(req.body.price), 
@@ -43,13 +41,11 @@ router.post('/deleteproduct', async function(req, res, next) {
 
 router.get('/updateproduct', async function(req, res, next) {
     var data = await getproduct(parseInt(req.query.idproducttoupdate));
-    console.log(data.rows);
     res.render('updateproduct', { product: data.rows[0] });
 });
 
 router.post('/updateproduct', async function(req, res, next) {
     const productquantity = req.body.quantity;
-    console.log(productquantity);
     const productprice = req.body.price;
     const quality = req.body.quality;
     const productdescription = req.body.description;

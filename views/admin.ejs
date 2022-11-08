@@ -5,7 +5,6 @@
         <%= title %>
     </title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-    <link rel='stylesheet' , href='/stylesheets/style.css'>
     <meta http-equiv="refresh" content="30">
 
 </head>
@@ -68,25 +67,26 @@
 
             <form action="/getProductByShop">
                 <select class="form-select" name="Select_Shop">
-        <option selected>Open this select menu</option> 
+                    <option selected>Open this select menu</option> 
+
+
          <% for (let p of shopIdList) { %> 
     
         <option name = "shopid" value= <%= p.shopid %>> <%= p.shopid %> </option>
-     
+
          <% } %> 
+         <option name = "shopid" value= "All Shop"> All Shop </option>
+
          
      </select>
                 <button class="btn btn-primary" type="submit">Search</button>
             </form>
             <% if (products != null) { %>
-                <div class="table-wrapper">
-                    <table class="table table-striped table-hover">
-                        <thead>
+                <div class="container mt-3">
+                    <h2><%= title %></h2>         
+                    <table class="table table-bordered">
+                      <thead>
                             <tr>
-                                <th>
-                                    <span class="custom-checkbox">
-                                </span>
-                                </th>
                                 <th>ID</th>
                                 <th>Name</th>
                                 <th>Quantity</th>
@@ -98,8 +98,6 @@
                         <% for (let p of products) { %>
 
                             <tr>
-                                <td>
-                                </td>
                                 <td>
                                     <%= p.productid %>
                                 </td>

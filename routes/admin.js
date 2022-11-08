@@ -6,7 +6,7 @@ router.get('/', function(req, res, next) {
 })
 
 router.post('/', function(req, res, next) {
-    res.render('login', { title: 'Login Page', message: 'TuanNhat' })
+    res.render('admin', { title: 'Login Page', message: 'TuanNhat' })
 })
 
 

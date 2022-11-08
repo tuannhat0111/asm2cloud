@@ -1,9 +1,7 @@
 var express = require('express');
 var authen = require('../model/authenticator');
 const get_data_account = require('../model/getdatabyaccount');
-const set_data_account = require('../model/setdatabyaccount');
-const deleteFunc = require('../model/deletedatabyaccount');
-const [getproduct, setproduct] = require('../model/getproduct');
+const get_all_product = require('../model/getallproduct');
 var session = require('express-session')
 
 var router = express.Router();
@@ -38,7 +36,7 @@ router.post('/login', async function(req, res, next) {
         res.redirect('/user');
     } else if (authenticated == true && role == "ADMIN") {
         let [dataInDb, shopIdList] = await get_data_account(shop_id);
-        // console.log(shopIdList);
+        session.shop_id = shop_id;
         res.render('admin', { title: 'ADMIN PAGES', data: dataInDb.rows, shopIdList: shopIdList.rows, products: null });
     } else {
         res.render('login', { title: 'Login Page', notice: 'Wrong username or password' });
@@ -48,9 +46,18 @@ router.post('/login', async function(req, res, next) {
 
 router.get('/getProductByShop', async function(req, res, next) {
     // res.render('createproduct', {  title: 'Create Product PAGE' })
+    if(req.query.Select_Shop == 'All Shop'){
+        const products = await get_all_product();
+        console.log(req.query.Select_Shop );
+        let [dataInDb, shopIdList] = await get_data_account(null);
+        res.render('admin', { title: 'ATN SHOP', products: products.rows, shopIdList: shopIdList.rows, data: null });
 
-    let [dataInDb, shopIdList] = await get_data_account(req.query.Select_Shop);
-    res.render('admin', { title: 'Hello', products: dataInDb.rows, shopIdList: shopIdList.rows, data: null });
+    }
+    else{
+    const [dataInDb, shopIdList] = await get_data_account(req.query.Select_Shop);
+
+    res.render('admin', { title: 'ATN SHOP', products: dataInDb.rows, shopIdList: shopIdList.rows, data: null });
+    }
 
 });
 
