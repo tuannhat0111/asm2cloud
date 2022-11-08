@@ -56,4 +56,4 @@ router.post('/updateproduct', async function(req, res, next) {
 
 });
 
-module.exports = router;
+module.exports = router;    

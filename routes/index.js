@@ -45,7 +45,6 @@ router.post('/login', async function(req, res, next) {
 });
 
 router.get('/getProductByShop', async function(req, res, next) {
-    // res.render('createproduct', {  title: 'Create Product PAGE' })
     if(req.query.Select_Shop == 'All Shop'){
         const products = await get_all_product();
         console.log(req.query.Select_Shop );
